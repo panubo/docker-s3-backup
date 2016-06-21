@@ -14,7 +14,7 @@ echo "==> Running Backup"
 : ${BACKUP_NAME:=$(date +%Y%m%d%H%M%S)}
 
 # Tests
-[ $BACKUP_SRC == "" ] && echo "BACKUP_SRC not specified" && exit 128
+[ "$BACKUP_SRC" == "" ] && echo "Error: BACKUP_SRC not specified" && exit 128
 
 # Perform backup
 tar -czf ${BACKUP_TMP}/${BACKUP_NAME}.tgz $BACKUP_SRC
