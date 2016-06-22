@@ -12,12 +12,16 @@ echo "==> Running Backup"
 : ${BACKUP_SRC:=''}
 : ${BACKUP_TMP:='/tmp'}
 : ${BACKUP_NAME:=$(date +%Y%m%d%H%M%S)}
+: ${BACKUP_EXCLUDE:=''}
 
 # Tests
 [ "$BACKUP_SRC" == "" ] && echo "Error: BACKUP_SRC not specified" && exit 128
 
+# Arg building
+[ "$BACKUP_EXCLUDE" != "" ] && for I in $BACKUP_EXCLUDE; do EXCLUDE_ARGS+="--exclude ${I} "; done
+
 # Perform backup
-tar -czf ${BACKUP_TMP}/${BACKUP_NAME}.tgz $BACKUP_SRC
+tar -czf ${BACKUP_TMP}/${BACKUP_NAME}.tgz $EXCLUDE_ARGS $BACKUP_SRC
 mv ${BACKUP_TMP}/${BACKUP_NAME}.tgz $BACKUP_DST
 
 # cleanup
