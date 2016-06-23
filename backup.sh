@@ -7,7 +7,7 @@ echo "==> Running Backup"
 
 # Defaults
 
-: ${BACKUP_KEEP:=30}  # Keep 30 days
+: ${BACKUP_KEEP:=0}  # Keep days (0=disabled)
 : ${BACKUP_DST:='/mnt/s3'}
 : ${BACKUP_SRC:=''}
 : ${BACKUP_TMP:='/tmp'}
@@ -30,7 +30,9 @@ else
     mv ${BACKUP_TMP}/${BACKUP_NAME}.tgz.enc $BACKUP_DST
 fi
 
-# cleanup
-find $BACKUP_DST -type f -mtime +${BACKUP_KEEP} -exec rm -f {} \;
+# Cleanup
+if [ "$BACKUP_KEEP" -gt "0" ]; then
+    find $BACKUP_DST -type f -mtime +${BACKUP_KEEP} -exec rm -f {} \;
+fi
 
 echo "Done"
