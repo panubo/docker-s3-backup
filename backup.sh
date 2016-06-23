@@ -5,7 +5,7 @@ set -e
 
 echo "==> Running Backup"
 
-# Defaults 
+# Defaults
 
 : ${BACKUP_KEEP:=30}  # Keep 30 days
 : ${BACKUP_DST:='/mnt/s3'}
