@@ -1,4 +1,4 @@
-FROM panubo/s3fs:1.80
+FROM panubo/s3fs:1.82
 
 ADD backup.sh /
 
