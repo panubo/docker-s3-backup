@@ -20,3 +20,7 @@ options.
 
 For best practice use an append-only bucket policy (no delObject permission)
 w/ expiry (object lifecycle policy).
+
+## Status
+
+Production stable.
