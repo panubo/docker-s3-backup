@@ -1,7 +1,7 @@
 # S3FS Backup
 
-Simple backup container. Creates a single compressed tar file and uploads to an
-s3 bucket. Optionally encrypted with AES-256-CBC.
+Simple backup image. Creates a single compressed tar file and uploads to an
+S3 bucket. Optionally encrypted with AES-256-CBC.
 
 ## Configuration
 
